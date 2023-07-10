@@ -1,1 +1,1 @@
-# simply-harmonic
+# simply-harmonics
