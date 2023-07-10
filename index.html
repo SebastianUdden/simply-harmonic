@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <style>
+            h1 {
+                color:#000;
+            }
+            .piano-container {
+                display: flex;
+                flex-direction: column;
+            }
+            .piano button {
+                background-color: #fff;
+                color: #000;
+                padding: 80px 20px;
+                border: none;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                margin: 0;
+                cursor: pointer;
+            }
+            .piano button:hover {
+                background-color: #eee;
+            }
+            .piano button:active {
+                background-color: #ccc;
+            }
+            .piano button.sharp {
+                background-color: #000;
+                color: #fff;
+                padding: 30px 6px;
+                margin-left: -13px;
+                margin-right: -13px;
+                z-index: 1;
+            }
+            .piano {
+                display:inline-flex;
+                align-items: flex-start;
+                background-color: black;
+                padding: 20px;
+                margin: 0 auto;
+                border-radius: 10px ;
+            }
+        </style>
+        <script>
+            const sayB = () => {
+                const bElement = document.getElementById('B#')
+                bElement.style.backgroundColor = "red"
+                setTimeout(() => {
+                    bElement.style.backgroundColor = "#fff"
+                }, 250)
+            }
+
+            const sayC = () => {
+                const bElement = document.getElementById('E')
+                bElement.style.backgroundColor = "red"
+                setTimeout(() => {
+                    bElement.style.backgroundColor = "#fff"
+                }, 250)
+
+                
+            }
+
+            const redColor = (note) => {
+                const bElement = document.getElementById(note)
+                bElement.style.backgroundColor = "red"
+                setTimeout(() => {
+                    bElement.style.backgroundColor = "#fff"
+                }, 250)
+            }
+
+            const showChord = (rootNote, thirdNote, fifthNote) => {
+                redColor(rootNote)
+                redColor(thirdNote)
+                redColor(fifthNote)
+            }
+
+            const majorChord = (note) => {
+                // Root = 0
+                // Third = 4
+                // Third = 7
+                const notes = ['A', 'A#', 'B', 'C', 'C#','D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
+                const noteIndex = notes.findIndex(n => n === note)
+                // if(noteIndex + 7 > 8) {
+                //     notIndex + 7 - 8
+                // }
+                showChord(notes[noteIndex], notes[noteIndex + 4], notes[noteIndex + 7])
+            }
+
+        </script>
+    </head>
+    <body>
+        <h1>Harmonics app</h1>
+        <p>This is harmonics</p>
+        <button onclick="alert('Test')">Click me!</button>
+
+        <div class="piano-container">
+        <h2>This is a piano</h2>
+            <div class="piano">
+                <button id="A" onclick="majorChord('A')">A</button>
+                <button id="A#" class="sharp" onclick="majorChord('A#')">A#</button>
+                <button id="B" onclick="majorChord('B')">B</button>
+                <button id="C" onclick="majorChord('C')">C</button>
+                <button id="C#" class="sharp" onclick="majorChord('C#')">C#</button>
+                <button id="D" onclick="majorChord('D')">D</button>
+                <button id="D#" class="sharp" onclick="majorChord('D#')">D#</button>
+                <button id="E" onclick="majorChord('E')">E</button>
+                <button id="F" onclick="majorChord('F')">F</button>
+                <button id="F#" class="sharp" onclick="majorChord('F#')">F#</button>
+                <button id="G" onclick="majorChord('G')">G</button>
+                <button id="G#" class="sharp" onclick="majorChord('G#')">G#</button>
+                <button id="A" onclick="majorChord('A')">A</button>
+            </div>
+        </div>
+    </body>
+</html>
